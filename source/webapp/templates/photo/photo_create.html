@@ -4,5 +4,8 @@
 <h2>Создание</h2>
 
 {% block content %}
-    {% include "partial/form.html" with button_text="Создать" %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include "partial/form.html" %}
+    </form>
 {% endblock %}

@@ -83,6 +83,9 @@ DATABASES = {
     }
 }
 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = 'webapp:photo_list'
+LOGOUT_REDIRECT_URL = 'webapp:photo_list'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators

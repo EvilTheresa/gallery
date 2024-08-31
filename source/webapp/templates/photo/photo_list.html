@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container mt-3">
-    <h2>Фотографии</h2>
-    {% for photo in photo_list %}
-        {% include 'partial/photo_list.html' %}
-    {% endfor %}
-    {% if is_paginated %}
-        {% include 'partial/pagination.html' %}
-    {% endif %}
-</div>
+    <div class="container mt-3">
+        <h2>Фотографии</h2>
+        <div class="row">
+            {% for photo in photo_list %}
+                {% include 'partial/photo_list.html' %}
+            {% endfor %}
+        </div>
+
+        {% if is_paginated %}
+            {% include 'partial/pagination.html' %}
+        {% endif %}
+    </div>
 {% endblock %}

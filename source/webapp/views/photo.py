@@ -12,7 +12,7 @@ from webapp.models import Photo
 class PhotoListView(ListView):
     model = Photo
     template_name = "photo/photo_list.html"
-    context_object_name = "posts"
+    context_object_name = "photo_list"
     paginate_by = 3
     ordering = ("-created_at",)
 
