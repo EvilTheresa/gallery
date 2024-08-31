@@ -19,6 +19,7 @@
                         </div>
                         <div class="photo-timestamp px-4 py-2 text-muted">{{ photo.created_at }}</div>
                     </a>
+                    <button data-post-id="{{ photo.id }}" data-js="like-button"><i class="bi bi-heart"></i></button>
                 {% else %}
                     <img class="photo-image img-fluid rounded" src="{{ photo.image.url }}" style="max-height: 300px;" alt="Photo Image">
                     <div class="photo-description px-4 py-3">
