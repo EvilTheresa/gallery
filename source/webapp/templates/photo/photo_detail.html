@@ -2,4 +2,9 @@
 
 {% block content %}
     {% include 'partial/photo_list.html' %}
+    {% if photo.author == request.user %}
+        <p>Token: <a
+                href="{% url 'webapp:photo_by_token' photo.access_token %}">{% url 'webapp:photo_by_token' photo.access_token %}</a>
+        </p>
+    {% endif %}
 {% endblock %}

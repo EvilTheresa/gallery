@@ -1,11 +1,13 @@
 from django.urls import path
 
 from webapp.views.album import AlbumListView, AlbumDetailView, AlbumCreateView, AlbumUpdateView, AlbumDeleteView
-from webapp.views.photo import PhotoListView, PhotoCreateView, PhotoDetailView, PhotoUpdateView, PhotoDeleteView
+from webapp.views.photo import PhotoListView, PhotoCreateView, PhotoDetailView, PhotoUpdateView, PhotoDeleteView, \
+    photo_by_token
 
 app_name = "webapp"
 
 urlpatterns = [
+    path('photo/<uuid:token>/', photo_by_token, name='photo_by_token'),
     path('', PhotoListView.as_view(), name="photo_list"),
     path('posts/add/', PhotoCreateView.as_view(), name="photo_add"),
     path('post/<int:pk>/', PhotoDetailView.as_view(), name="photo_view"),

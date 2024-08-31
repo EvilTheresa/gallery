@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
@@ -16,6 +18,7 @@ class Photo(models.Model):
     )
     album = models.ForeignKey('Album', on_delete=models.SET_NULL, null=True, blank=True, related_name='photos')
     is_public = models.BooleanField(default=True)
+    access_token = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
     def __str__(self):
         return self.caption

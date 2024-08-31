@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -57,7 +57,9 @@ class PhotoDetailView(DetailView):
     queryset = Photo.objects.all()
     template_name = "photo/photo_detail.html"
 
-
+def photo_by_token(request, token):
+    photo = get_object_or_404(Photo, access_token=token)
+    return render(request, 'photo/photo_detail.html', {'photo': photo})
 # class LikePhotoView(LoginRequiredMixin, View):
 #
 #     def get(self, request, *args, pk, **kwargs):
