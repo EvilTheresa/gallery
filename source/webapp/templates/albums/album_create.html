@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Создание{% endblock %}
+<h2>Создание</h2>
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include "partial/form.html" %}
+    </form>
+{% endblock %}

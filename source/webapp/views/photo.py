@@ -47,7 +47,7 @@ class PhotoDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = "photo/photo_delete.html"
 
     def has_permission(self):
-        return self.request.user == self.get_object().author
+        return self.request.user == self.get_object().author or super().has_permission()
 
     def get_success_url(self):
         return reverse("accounts:profile", kwargs={"pk": self.request.user.pk})
@@ -58,7 +58,7 @@ class PhotoDetailView(DetailView):
     template_name = "photo/photo_detail.html"
 
 
-# class LikePostView(LoginRequiredMixin, View):
+# class LikePhotoView(LoginRequiredMixin, View):
 #
 #     def get(self, request, *args, pk, **kwargs):
 #         post = get_object_or_404(Photo, pk=pk)

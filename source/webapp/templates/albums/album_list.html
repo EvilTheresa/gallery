@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Albums</h1>
+<a href="{% url 'webapp:album_create' %}">Create New Album</a>
+<ul>
+    {% for album in albums %}
+        {% include 'partial/album_list.html' %}
+    {% endfor %}
+</ul>
+{% endblock %}
