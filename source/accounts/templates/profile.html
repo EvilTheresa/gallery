@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h2>Профиль пользователя: {{ profile_user.get_full_name }}</h2>
+        <div class="profile-posts mt-5">
+            <div class="row">
+                {% for photo in user_obj.photo.all %}
+                    <div class="col-md-4 mb-4">
+                        <a href="{% url "webapp:photo_view" photo.pk %}">
+                            <img class="post-thumbnail img-fluid" src="{{ photo.image.url }}"
+                                 alt="{{ photo.image.filename }}">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
