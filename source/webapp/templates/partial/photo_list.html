@@ -1,0 +1,15 @@
+<div class="photo bg-white border rounded">
+    <div class="photo-header py-3 px-4 d-flex align-items-center">
+                <span class="photo-username font-weight-bold">
+                    <a href="{% url 'accounts:profile' photo.author.pk %}">{{ photo.author.username }}</a>
+                </span>
+        {% if request.user == photo.author or request.user.has_perm('webapp.change_photo') %}
+            <a href="{% url 'webapp:photo_update' photo.pk %}" class="ms-auto">Редактировать</a>
+        {% endif %}
+    </div>
+    <img class="photo-image img-fluid" src="{{ photo.image.url }}" alt="Photo Image">
+    <div class="photo-description px-4 py-3">
+        <p>{{ photo.caption }}</p>
+    </div>
+    <div class="photo-timestamp px-4 py-2 text-muted">{{ photo.created_at }}</div>
+</div>

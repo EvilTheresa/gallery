@@ -1,0 +1,18 @@
+<div class="album bg-white border rounded">
+    <div class="album-header py-3 px-4 d-flex align-items-center">
+                <span class="album-username font-weight-bold">
+                    <a href="{% url 'accounts:profile' album.author.pk %}">{{ album.author.username }}</a>
+                </span>
+        {% if request.user == album.author or request.user.has_perm('webapp.change_album') %}
+            <a href="{% url 'webapp:album_update' album.pk %}" class="ms-auto">Редактировать</a>
+        {% endif %}
+    </div>
+    <div class="album-description px-4 py-3">
+        <h5>{{ album.title }}</h5>
+        <p>{{ album.description }}</p>
+    </div>
+    <div class="album-timestamp px-4 py-2 text-muted">{{ album.created_at }}</div>
+    <div class="px-4 py-2">
+        <a href="{% url 'webapp:album_detail' album.pk %}">Просмотреть фотографии</a>
+    </div>
+</div>

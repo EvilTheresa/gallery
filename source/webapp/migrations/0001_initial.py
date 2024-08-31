@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('is_public', models.BooleanField(default=True)),
                 ('album', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='photos', to='webapp.album')),
-                ('author', models.ForeignKey(default=1, on_delete=django.db.models.deletion.SET_DEFAULT, related_name='photo', to=settings.AUTH_USER_MODEL)),
+                ('author', models.ForeignKey(default=1, on_delete=django.db.models.deletion.SET_DEFAULT, related_name='photo.py', to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
